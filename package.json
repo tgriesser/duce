@@ -1,6 +1,6 @@
 {
   "name": "duce",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Thin wrapper around the transduce library adding helpers & experimental features",
   "main": "index.js",
   "scripts": {
