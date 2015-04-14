@@ -1,0 +1,20 @@
+{
+  "name": "duce",
+  "version": "0.1.0",
+  "description": "Thin wrapper around the transduce library adding helpers & experimental features",
+  "main": "index.js",
+  "scripts": {
+    "dev": "babel -w --optional runtime --loose all --source-maps src --out-dir lib",
+    "build": "babel --optional runtime --loose all --source-maps src --out-dir lib"
+  },
+  "keywords": [
+    "transduce",
+    "Transducers"
+  ],
+  "author": "Tim Griesser",
+  "license": "MIT",
+  "dependencies": {
+    "babel-runtime": "^5.1.8",
+    "transduce": "0.9.0"
+  }
+}
