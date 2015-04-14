@@ -12,6 +12,16 @@ export function lazySeq(t, value) {
   return iterator(sequence(t, value))
 }
 
+export function composeArr(arr) {
+  return function (xf) {
+    var i = arr.length;
+    while (i--) {
+      xf = arr[i](xf);
+    }
+    return xf;
+  };
+}
+
 export class FlattenIterator {
 
   constructor(iterator, guard) {
@@ -65,6 +75,31 @@ export class FlattenIterator {
     return this
   }
 
+}
+
+class Flatten extends Transduce {
+
+  constructor(xf, deep) {
+    super(xf)
+    this.deep = deep
+  }
+
+  [tStep](value, input) {
+    if (Array.isArray(input)) {
+      var reducer = this.deep 
+        ? (value, input) => this[tStep](value, input)
+        : (value, input) => this.xfStep(value, input)
+      return reduce(reducer, value, input)
+    }
+    return this.xfStep(value, input)
+  }
+
+}
+
+export function flatten(deep) {
+  return function(xf) {
+    return new Flatten(xf, deep)
+  }
 }
 
 export function iterOnce(val) {
