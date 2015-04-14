@@ -3,7 +3,7 @@
 import * as transduce from 'transduce'
 export * from 'transduce'
 
-const {isIterator, isIterable, iterator, 
+const {isIterator, isIterable, Transduce, iterator, 
   sequence, protocols: protocols} = transduce
 
 export const iterSymbol = protocols.iterator
